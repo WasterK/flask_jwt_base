@@ -1,10 +1,11 @@
 import psycopg2
 from psycopg2 import sql, Error
+from ..config import Config
 
 class UserModule:
     def __init__(self, db_url=None):
         """Initialize with PostgreSQL connection parameters"""
-        self.db_url = db_url or "postgresql://kalpsoft:Kalpsoft123@user-management-database.cpceiuioqeci.ap-south-1.rds.amazonaws.com:5432/user_management"
+        self.db_url = db_url or Config.DATABASE_URL
         self.connection = self.create_connection()
 
     def create_connection(self):
